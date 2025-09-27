@@ -32,8 +32,19 @@
 
 
 //------------------(D-b) RGB to CMYK-------------------//
+// #include <math.h>
 // int main(){
-    
+//     float red,green,blue,cyan,mangeta,yellow,black;
+//     printf("enter RGB value : ");
+//     scanf("%f %f %f",&red,&green,&blue);
+//     float white;
+//     white=fmax(fmax(red/255,green/255),blue/255);
+//     cyan=(white-red/255)/white;
+//     mangeta=(white-green/255)/white;
+//     yellow=(white-blue/255)/white;
+//     black=1-white;
+//     printf("c : %.3f , m : %.3f , y : %.3f , k : %.3f",cyan,mangeta,yellow,black);
+
 //     return 0;
 // }
 
@@ -121,6 +132,13 @@
     //     else printf("the sum ain't 1");
     // }//though it will always be 1 as sin^2x + cos^x =1
     
-//------------------(E-e) check if sin^2+cos^==1------------------//
+//------------------(E-e) rewriting the book's exercise code with conditional operators------------------//
+
+int main(){
+    int salary;
+    scanf("%d",&salary);
+    salary>=25000 && salary<=40000? printf("manager") : salary>=15000 && salary<25000? printf("accountant"):printf("clerk");
+    return 0;
+}
 
 
