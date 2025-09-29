@@ -32,9 +32,33 @@
 
 //-----------------(B-c) <Matchsticks Game>------------------//
 
-// int main(){
-//     return 0;
-// }
+#include <stdio.h>
+
+int main(){
+  int sticks=21,com,user;
+  int won0com1user;
+  while(sticks>=1){
+    if(sticks==1) break;
+    won0com1user=1;
+    
+    printf("\nyou : ");
+    scanf("%d",&user);
+    if(user>4){
+      printf("wrong input, you lost");
+      break;}
+    sticks -=user;
+    
+    if(sticks==1) break;
+    won0com1user=0;
+    com=5-user;
+    sticks-=com;
+    printf("\ncomputer : %d",com);
+    printf("\nreamining %d sticks ",sticks);
+ }   
+  if(won0com1user==1) printf("\nyou won\n");
+  if(won0com1user==0) printf("\ncomputer won\n");
+  return 0;
+}
 
 //-----------------(B-d) <Count positive,negative and 0's>------------------//
 // int main(){
@@ -79,4 +103,5 @@
 //     printf("\n%d  -  %d\ntotal %d numbers",smallest,biggest,i);
 //     return 0;
 // }
+
 
