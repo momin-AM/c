@@ -76,3 +76,19 @@ int main(){
     // printf("%d \n",res);
     return 0;
 }
+
+
+//B-b sum of first 25 natural numbers
+
+int getSum(int n){
+    if(n==1) return 1;
+    return n+getSum(n-1);
+}
+
+int main(){
+    int res=getSum(25);
+    cout<<res<<endl;
+    return 0;
+}
+
+
