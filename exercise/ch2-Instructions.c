@@ -3,24 +3,24 @@
 #include <math.h>
 
 //------------MINIMUM NUMBERS OF NOTES FOR A NUMBER OF INR------------------------
-// int main(){
-//     int amount,hundreds,fifties,tens,fives,twos,ones;
-//     printf("enter amount :");
-//     scanf("%d",&amount);
-//     hundreds=amount/100;
-//     amount%=100;
-//     fifties=amount/50;
-//     amount%=50;
-//     tens=amount/10;
-//     amount%=10;
-//     fives=amount/5;
-//     amount%=5;
-//     twos=amount/2;
-//     amount%=2;
-//     ones=amount/1;
-//     amount%=1;
-//     printf("total number of notes : %d",hundreds+fifties+tens+fives+twos+ones);
-// }
+int main(){
+    int amount,hundreds,fifties,tens,fives,twos,ones;
+    printf("enter amount :");
+    scanf("%d",&amount);
+    hundreds=amount/100;
+    amount%=100;
+    fifties=amount/50;
+    amount%=50;
+    tens=amount/10;
+    amount%=10;
+    fives=amount/5;
+    amount%=5;
+    twos=amount/2;
+    amount%=2;
+    ones=amount/1;
+    amount%=1;
+    printf("total number of notes : %d",hundreds+fifties+tens+fives+twos+ones);
+}
 
 // -------------(G-a)SUM OF 5 DIGITS--------------
 // int main(){
@@ -139,4 +139,5 @@ int main(){
     }
     return 0;
 }
+
 
