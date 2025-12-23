@@ -1,0 +1,104 @@
+#include <stdio.h>
+
+int largestNum(int mat[][5],int,int);//14.1
+void transpose(int mat[][5],int);//14.2
+int isSymmetric(int mat[][5],int);//A-e
+void summ(int mat1[][5],int mat2[][5],int res[][5],int n);//A-b
+void mult(int mat1[][5],int mat2[][5],int res[][5],int n);//A-c-due
+int main(){
+    int matrix[5][5]={
+        {1,2,3,4,5},
+        {6,7,8,9,10},
+        {11,12,13,14,15},
+        {16,17,18,19,20},
+        {21,22,23,24,25}
+    };
+    int matrix2[5][5]={
+        {1,2,3,4,5},
+        {6,7,8,9,10},
+        {11,12,13,14,15},
+        {16,17,18,19,20},
+        {21,22,23,24,25}
+    };
+    int res[5][5];
+    // int largest=largestNum(matrix,5,5);
+    // printf("largest num is: %d\n",largest);
+    transpose(matrix,5);
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            printf("%d ",matrix[i][j]);
+        }
+        printf("\n");
+    }
+    int symmetric=isSymmetric(matrix,5);
+    printf("symmetric ? : %d\n",symmetric);
+    summ(matrix,matrix2,res,5);
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            printf("%d ",res[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+//pick up the largest numb from a 5X5 matrix
+int largestNum(int mat[][5],int row,int col){
+    int largest=mat[0][0];
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            if(mat[i][j]>largest) largest=mat[i][j];
+        }
+    }
+    return largest;
+}
+//transpose of a square matrix
+void transpose(int mat[][5],int n){
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            int temp=mat[i][j];
+            mat[i][j]=mat[j][i];
+            mat[j][i]=temp;
+        }
+    }
+}
+
+//check if a square matrix is symmetric or not
+int isSymmetric(int mat[][5],int n){
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            if(mat[i][j]!=mat[j][i]) return 0;
+        }
+    }
+    return 1;
+}
+
+void summ(int mat1[][5],int mat2[][5],int res[][5],int n){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            res[i][j]=mat1[i][j]+mat2[i][j];
+        }
+    }
+}
+
+//transpose of a matrix(duplicate matrix creation)
+
+// int main(){
+//     int matrix1[][3]={
+//         {1,2,3},
+//         {4,5,6}
+//     };
+//     int matrix2[3][2];
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<2;j++){
+//             matrix2[i][j]=matrix1[j][i];
+//         }
+//     }
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<2;j++){
+//             printf("%d ",matrix2[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     return 0;
+
+// }
