@@ -2,9 +2,8 @@
 
 int largestNum(int mat[][5],int,int);//14.1
 void transpose(int mat[][5],int);//14.2
-int isSymmetric(int mat[][5],int);//A-e
-void summ(int mat1[][5],int mat2[][5],int res[][5],int n);//A-b
-void mult(int mat1[][5],int mat2[][5],int res[][5],int n);//A-c-due
+int isSymmetric(int mat[][5],int);//C-e
+void summ(int mat1[][5],int mat2[][5],int res[][5],int n);//C-f
 int main(){
     int matrix[5][5]={
         {1,2,3,4,5},
@@ -82,23 +81,77 @@ void summ(int mat1[][5],int mat2[][5],int res[][5],int n){
 
 //transpose of a matrix(duplicate matrix creation)
 
-// int main(){
-//     int matrix1[][3]={
-//         {1,2,3},
-//         {4,5,6}
-//     };
-//     int matrix2[3][2];
-//     for(int i=0;i<3;i++){
-//         for(int j=0;j<2;j++){
-//             matrix2[i][j]=matrix1[j][i];
-//         }
-//     }
-//     for(int i=0;i<3;i++){
-//         for(int j=0;j<2;j++){
-//             printf("%d ",matrix2[i][j]);
-//         }
-//         printf("\n");
-//     }
-//     return 0;
+int main(){
+    int matrix1[][3]={
+        {1,2,3},
+        {4,5,6}
+    };
+    int matrix2[3][2];
+    for(int i=0;i<3;i++){
+        for(int j=0;j<2;j++){
+            matrix2[i][j]=matrix1[j][i];
+        }
+    }
+    for(int i=0;i<3;i++){
+        for(int j=0;j<2;j++){
+            printf("%d ",matrix2[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
 
-// }
+}
+
+//C-g - mult
+
+//multiply any two 3X3 matrices
+
+int main(){
+    int mat1[][3]={
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    }, mat2[][3]={
+        {3,2,1},
+        {6,5,4},
+        {9,8,7}
+    };
+    int res[3][3];
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            int sum=0;
+            for(int k=0;k<3;k++){
+                sum+=mat1[i][k]*mat2[k][j];
+            }
+            res[i][j]=sum;
+        }
+    }
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            printf("%d ",res[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+//C-h - shifting arrayele rotationally
+//call shift for a 4X5 matrix and get it's rows left shifted
+int main(){
+    int matrix[4][5]={
+        {1,2,3,4,5},
+        {1,9,3,4,5},
+        {1,2,9,4,5},
+        {1,2,3,6,5}
+    };
+    for(int i=0;i<4;i++){
+        shift(matrix[i],4,2);
+    }
+    for(int i=0;i<=4;i++){
+        for(int j=0;j<5;j++){
+            printf("%d ",matrix[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
