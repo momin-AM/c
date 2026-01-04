@@ -147,3 +147,53 @@ int main()
     }
     return 0;
 }
+
+//count the occurences of any two vowels in succession in a line of text
+
+// int main(){
+//     char line[100]="please read this application and give me gratuity";
+//     int res=0;
+//     int len=strlen(line);
+//     for(int i=0;i<len-1;i++){
+//         if(line[i]=='a'||line[i]=='e'||line[i]=='i'||line[i]=='o'||line[i]=='u'){
+//             if(line[i+1]=='a'||line[i+1]=='e'||line[i+1]=='i'||line[i+1]=='o'||line[i+1]=='u') res++;
+//         }
+//     }
+//     printf("%d\n",res);
+//     return 0;
+// }
+
+//convert any number to string form(12345 = twelve thousand 3 hundred forty five)
+
+char* numToStr(int num){
+    char *tillTwenty[]={"","one","two","three","four","five",
+                        "six","seven","eight","nine","ten",
+                        "eleven","twelve","thirteen","fourteen","fifteen",
+                        "sixteen","seventeen","nineteen","twenty"
+    };
+    char res[200]="";
+    int pref=0;
+    char *prefixes[]={"","hundred","thousand","lakh","crore"};
+    int hunMod;
+    while(num!=0){
+        hunMod=num%100;
+        if(hunMod<21){
+            strcat(res,tillTwenty[hunMod]);
+        }else{
+            strcat(res,tillTwenty[hunMod/10]);
+            strcat(res,"ty\0");
+            strcat(res,tillTwenty[hunMod%10]);
+        }
+        strcat(res,prefixes[pref]);
+        pref++;
+    }
+    return res;
+}
+
+int main(){
+    int num=123;
+    char res[200];
+    res=numToStr(num);
+    printf("%s\n",res);
+    return 0;
+}
