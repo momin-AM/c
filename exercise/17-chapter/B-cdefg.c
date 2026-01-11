@@ -116,8 +116,11 @@
 //     return days;
 // }
 
-//B-f (due)
+//B-f -library system
+#include <stdio.h>
+//library system
 #include <stdlib.h>
+#include <string.h>
 struct library
 {
     int accessionNum;
@@ -127,32 +130,37 @@ struct library
 
 //function prototypes
 void addBook(int booksNum,struct library *books);
-void display(struct library *books);
+void display(struct library *books,int);
 void listWithAuthor(int, struct library*);
 void showBooksWithAccessNum(int lim,struct library *books);
 int bookCount(struct library *books);
 void sortBooksWithAccessNum(int,struct library *books);
 
 int main(){
-    struct library books[100];
+    struct library books[100]={0};
     int curNo=0;
     int i=0;
     // while(books[i].accessionNum!=-1){
     //     curNo++;
     //     i++;
     // }
+    while(1){
     int choice;
     printf("1.add book info\n2.display book info \n3.list all books of given authot\n4.get book name with accession number\n5book count\n6.list books in accession order,7.exit\nenetr : ");
     scanf("%d",&choice);
+    char ch;
     switch (choice)
     {
     case 1:
         addBook(curNo,books);
         curNo++;
         printf("book added succesfully\n");
+        printf("press enter to contiunue : ");
+        getchar();
+        getchar();
         break;
     case 2:
-        display(books);
+        display(books,curNo);
         break;
     case 3:
         listWithAuthor(curNo,books);
@@ -174,26 +182,27 @@ int main(){
     default:
         break;
     }
-    main();
+}
     return 0;
 }
 
 void addBook(int booksNum,struct library *books){
    (books+booksNum)->accessionNum=booksNum+1;
    printf("enter book name : ");
-   scanf("%s",(books+booksNum)->name);
+   scanf(" %[^\n]",(books+booksNum)->name);
    printf("enter author name : ");
-   scanf("%s",(books+booksNum)->aurhor);
+   scanf(" %[^\n]",(books+booksNum)->aurhor);
    printf("enter price : ");
    scanf("%d",&(books+booksNum)->price);
    (books+booksNum)->issued=0;
 }
 
-void display(struct library *books){
+void display(struct library *books,int curNo){
     printf("enter accession number : ");
     int num;
     scanf("%d",&num);
-    printf("book name : %s\nauthor : %s\nprice : %d , issued : %d\n",(books+num-1)->name,(books+num-1)->aurhor,(books+num-1)->price,(books+num-1)->issued);
+    if(num>=1 && num<=curNo) printf("book name : %s\nauthor : %s\nprice : %d , issued : %d\n",(books+num-1)->name,(books+num-1)->aurhor,(books+num-1)->price,(books+num-1)->issued);
+    else printf("invalid accession number\n");
 }
 
 void listWithAuthor(int lim, struct library *books){
@@ -220,7 +229,7 @@ void showBooksWithAccessNum(int lim,struct library *books){
 
 int bookCount(struct library *books){
     int i=0;
-    while((books+i)->accessionNum!=-1) i++;
+    while((books+i)->accessionNum!=0) i++;
     return i;
 }
 
@@ -233,6 +242,10 @@ int compare(const void *a, const void *b){
 void sortBooksWithAccessNum(int lim,struct library *books){
     qsort(books,lim,sizeof(*books),compare);
 }
+
+
+
+
 //B-g - compare dates if they are equal
 
 // struct date
