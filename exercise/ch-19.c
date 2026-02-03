@@ -69,4 +69,37 @@ int main(){
     return 0;
 
 }*/
-
+//B-c copy lines from two file alternatively and write to another file
+int main(){
+    FILE *a,*b,*target;
+    char str1[100],str2[100];
+    a=fopen("students.dat","r");
+    if(a==NULL){
+        printf("error opening file a\n");
+        return 1;
+    }
+    b=fopen("v2.dat","r");
+    if(b==NULL){
+        printf("error opening file b\n");
+        fclose(a);
+        return 2;
+    }
+    target=fopen("tadaa.dat","w");
+    if(target==NULL){
+        printf("error creating/opening file tadaa.dat\n");
+        return 3;
+    }
+    while((fgets(str1,99,a))!=NULL && (fgets(str2,99,b))!=NULL){
+        fprintf(target,"%s",str1);
+        fprintf(target,"%s",str2);
+    }
+    while((fgets(str1,99,a))!=NULL){
+        fprintf(target,"%s",str1);
+    }
+    while((fgets(str2,99,b))!=NULL){
+        fprintf(target,"%s",str2);
+    }
+    printf("file written successfully\n");
+    fclose(a);fclose(b);fclose(target);
+    return 0;
+}
